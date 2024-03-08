@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>/</loc>
+  </url><url>
+    <loc>/3-securecloudfrontdistribution/3.1-createcloudfrontkeygroup/</loc>
+  </url><url>
+    <loc>/3-securecloudfrontdistribution/3.2-createsecretmanager/</loc>
+  </url><url>
+    <loc>/1-introduce/</loc>
+  </url><url>
+    <loc>/2-prerequiste/2.1-creates3bucket/</loc>
+  </url><url>
+    <loc>/2-prerequiste/2.2-createcloudfrontdistribution/</loc>
+  </url><url>
+    <loc>/4-createcloudfrontsignedurl/4.2-usingcannedpolicy/</loc>
+  </url><url>
+    <loc>/2-prerequiste/</loc>
+  </url><url>
+    <loc>/3-securecloudfrontdistribution/</loc>
+  </url><url>
+    <loc>/4-createcloudfrontsignedurl/</loc>
+  </url><url>
+    <loc>/5-createapigateway/</loc>
+  </url><url>
+    <loc>/6-cleanup/</loc>
+  </url><url>
+    <loc>/categories/</loc>
+  </url><url>
+    <loc>/tags/</loc>
+  </url>
+</urlset>

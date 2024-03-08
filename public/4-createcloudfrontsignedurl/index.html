@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Create Lambda Function :: AWS CloudFront Signed URL</title>
+
+    
+    <link href="/css/nucleus.css?1709917967" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1709917967" rel="stylesheet">
+    <link href="/css/hybrid.css?1709917967" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1709917967" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1709917967" rel="stylesheet">
+    <link href="/css/auto-complete.css?1709917967" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1709917967" rel="stylesheet">
+    <link href="/css/theme.css?1709917967" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1709917967" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1709917967" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1709917967"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/4-createcloudfrontsignedurl/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1709917967"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1709917967"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1709917967"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/" title="Preparation " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/">
+           <b> 2. </b> Preparation 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.1-creates3bucket/" title="Preparing a S3 bucket" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.1-creates3bucket/">
+           <b> 2.1 </b> Preparing a S3 bucket
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.2-createcloudfrontdistribution/" title="Create CloudFront Distribution" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.2-createcloudfrontdistribution/">
+           <b> 2.2 </b> Create CloudFront Distribution
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-securecloudfrontdistribution/" title="Secure your CloudFront Distribution" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-securecloudfrontdistribution/">
+           <b> 3. </b> Secure your CloudFront Distribution
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-securecloudfrontdistribution/3.1-createcloudfrontkeygroup/" title="Create CloudFront Key Group" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-securecloudfrontdistribution/3.1-createcloudfrontkeygroup/">
+           <b> 3.1 </b> Create CloudFront Key Group
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-securecloudfrontdistribution/3.2-createsecretmanager/" title="Create Secrets Manager" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-securecloudfrontdistribution/3.2-createsecretmanager/">
+           <b> 3.2 </b> Create Secrets Manager
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-createcloudfrontsignedurl/" title="Create Lambda Function" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/4-createcloudfrontsignedurl/">
+           <b> 4. </b> Create Lambda Function
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-createcloudfrontsignedurl/4.2-usingcannedpolicy/" title="Create CloudFront Distribution using Canned Policy " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-createcloudfrontsignedurl/4.2-usingcannedpolicy/">
+           <b> 4.1 </b> Create CloudFront Distribution using Canned Policy 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-createapigateway/" title="Create API Gateway " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-createapigateway/">
+           <b> 5. </b> Create API Gateway 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-cleanup/" title="Clean up resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-cleanup/">
+          <b>6. </b>Clean up resources
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>30-01-2022</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>CloudFront Signed URL</a> > Create Lambda Function
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#create-lambda-function">Create Lambda Function</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Create Lambda Function
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="introduction">Introduction</h3>
+<p><strong>AWS Lambda</strong> is a compute service that lets you run code without provisioning or managing servers. Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, and logging.</p>
+<p>In this step you will create <strong>AWS Lambda</strong> and use it to create <strong>Amazon CloudFront Signed URLs</strong>.</p>
+<h3 id="architecture">Architecture</h3>
+<p><img src="/images/signURL-3.png" alt="Overall"></p>
+<h3 id="create-lambda-function">Create Lambda Function</h3>
+<ol>
+<li>
+<p>From your AWS management console and navigate to the <a href="https://us-west-2.console.aws.amazon.com/lambda/home?region=us-east-1#/functions">AWS Lambda Management Console</a>.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-1.png" alt="lambda"></p>
+</li>
+<li>
+<p>Select the same AWS <strong>Region</strong> that you use for <strong>AWS Secrets Manager</strong>. Currently, this lab uses region <strong>us-east-1</strong>.</p>
+</li>
+<li>
+<p>Click on <strong>Functions</strong> on the left navigation, and then choose <strong>Create function</strong>.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-2.png" alt="lambda"></p>
+</li>
+<li>
+<p>From <strong>Create function</strong> window:</p>
+<ul>
+<li>Select <strong>Author from scratch</strong>.</li>
+<li>For <strong>Function name</strong>, provide a name. For example: <code>signCloudFrontUrlFunction</code></li>
+<li>For <strong>Runtime</strong>, select <strong>Node.js 16.x</strong>.</li>
+</ul>
+<p><img src="/images/4-lambdaFunction/04-lambda-3.png" alt="lambda"></p>
+</li>
+<li>
+<p>Scroll down to <strong>Change default execution role</strong> section, for <strong>Execution role</strong> select <strong>Create a new role with basic Lambda permissions</strong>. Leave the <strong>Advanced settings</strong> section untouched and choose <strong>Create functions</strong></p>
+<p><img src="/images/4-lambdaFunction/04-lambda-4.png" alt="lambda"></p>
+</li>
+<li>
+<p>Wait a little bit for the Lambda Function to be provisioned.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-5.png" alt="lambda"></p>
+</li>
+<li>
+<p>Replace the Lambda <code>index.js</code> codes with the codes from bellow.</p>
+<pre tabindex="0"><code>const AWS = require(&#39;aws-sdk&#39;);
+
+const s3ObjectPath = &#39;&#39;;
+const awsCloudFrontUrl = &#39;&#39;;
+const amazonCloudFrontKeyPairId = &#39;&#39;;
+const awsRegion = &#39;&#39;;
+const awsSecretsManagerSecretName = &#39;&#39;;
+const awsSecretsManagerSecretKeyName = &#39;&#39;;
+
+const secretsManager = new AWS.SecretsManager({region: awsRegion});
+
+const getKeyFromSecretsManager = () =&gt; {
+    return new Promise((resolve, reject) =&gt; {
+        secretsManager.getSecretValue({SecretId: awsSecretsManagerSecretName}, (err, data) =&gt; {
+            if (err) {
+                console.log (&#34;Get Secret Error&#34;, err);
+                return reject(err);
+            }
+            console.log(&#34;Private key retrieved&#34;);
+            const key = JSON.parse(data.SecretString);
+            const key_val = key[awsSecretsManagerSecretKeyName].replace(/\\n/g, &#39;\n&#39;);
+            return resolve(key_val);
+        });
+    });
+}
+
+exports.handler = async function(event, context) {
+
+    const privateKey = await getKeyFromSecretsManager();
+
+    const signer = new AWS.CloudFront.Signer(amazonCloudFrontKeyPairId, privateKey);
+
+    const delta5Mins = 5 * 60 * 1000;
+    const signedUrl = signer.getSignedUrl({
+        url: `https://${awsCloudFrontUrl}/${s3ObjectPath}`,
+        expires: Math.floor((Date.now() + delta5Mins) / 1000)
+    });
+
+    return {
+        body: JSON.stringify({signedUrl}),
+        statusCode: 200
+    };
+}
+</code></pre><p>There are 6 parametes you must fill for the function to work:</p>
+<ul>
+<li><strong>s3ObjectPath</strong>: Name of the object you push to S3 in step 2.1. If you store it in a subfolder, the path will be: <!-- raw HTML omitted -->/<!-- raw HTML omitted -->. In my case, this value is: <strong>sebastian.jpg</strong></li>
+<li><strong>awsCloudFrontUrl</strong>: CloudFront Distribution URL you created in step 2.2. Format: dxxxxxxxxxz.cloudfront.net. (You don&rsquo;d have to put <strong>https://</strong> in front of the CloudFront url)</li>
+<li><strong>amazonCloudFrontKeyPairId</strong>: Key group ID of the CloudFront public key group you created in step 3.1.</li>
+<li><strong>awsRegion</strong>: The region of Secret Manager you stored your secret in step 3.2.</li>
+<li><strong>awsSecretsManagerSecretName</strong>: Name of the Secret Manager in step 3.2.</li>
+<li><strong>awsSecretsManagerSecretKeyName</strong>: Name of the key of the private key you stored in Secret Manager in step 3.2.</li>
+</ul>
+<p><img src="/images/4-lambdaFunction/04-lambda-6.png" alt="lambda"></p>
+</li>
+<li>
+<p><strong>Save</strong> and <strong>Deploy</strong> the function. Then you can create a <strong>Test</strong> event like bellow.
+<img src="/images/4-lambdaFunction/04-lambda-8.png" alt="lambda"></p>
+</li>
+<li>
+<p>After creating a test event. You can run <strong>Test</strong> to check if the function works. However, you will get the error like this:
+<img src="/images/4-lambdaFunction/04-lambda-7.png" alt="lambda"></p>
+<p>You know why? Because we have not added the permission to read the Secret from <strong>Secret Manager</strong> to <strong>Lambda Function</strong> execution role.</p>
+</li>
+<li>
+<p>Since the newly created Lambda role does <strong>NOT</strong> have permission to access <strong>AWS Secrets Manager</strong>, you will need to update the role in <a href="https://console.aws.amazon.com/iam">IAM</a>. To quickly update this role, follow the step in the image bellow:</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-9.png" alt="lambda"></p>
+</li>
+<li>
+<p>After navigating to the role needed to modify, choose <strong>Add permission</strong> -&gt; <strong>Create inline policy</strong>.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-10.png" alt="lambda"></p>
+</li>
+<li>
+<p>In the <strong>Specify permissions</strong> window, change to <strong>JSON</strong> view.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-11.png" alt="lambda"></p>
+<p>Then copy and paste the policy bellow. Remember to change the resource arn to the arn of the Secret you created in Secret Manager in step 3.2.</p>
+<pre tabindex="0"><code>{
+    &#34;Effect&#34;: &#34;Allow&#34;,
+    &#34;Action&#34;: &#34;secretsmanager:GetSecretValue&#34;,
+    &#34;Resource&#34;: &#34;arn:aws:secretsmanager:us-west-2:8xxxxxxxxxx6:secret:your_secret_name&#34;
+}
+</code></pre></li>
+<li>
+<p>Choose <strong>Next</strong> to continue. In <strong>Review and create</strong> window, give the newly created policy a name and review the options. Choose <strong>Create policy</strong> to finish.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-12.png" alt="lambda"></p>
+</li>
+<li>
+<p>Return to your Lambda Function and run the <strong>Test</strong> again. If you set up correctly, the result will be looked like that:</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-13.png" alt="lambda"></p>
+<p>In the log window, you will get the signed URL. Copy this URL and paste to your browser, this time you will be able to access your image stored in S3.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-14.png" alt="lambda"></p>
+</li>
+<li>
+<p>Refresh the URL above after 5 minutes and you will get the error. Because we set the expired time to 5 minutes, after that amount of time, the URL will no longer work.</p>
+<p><img src="/images/4-lambdaFunction/04-lambda-15.png" alt="lambda"></p>
+</li>
+</ol>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-securecloudfrontdistribution/3.2-createsecretmanager/" title="Create Secrets Manager"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/4-createcloudfrontsignedurl/4.2-usingcannedpolicy/" title="Create CloudFront Distribution using Canned Policy " style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1709917967"></script>
+    <script src="/js/perfect-scrollbar.min.js?1709917967"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1709917967"></script>
+    <script src="/js/jquery.sticky.js?1709917967"></script>
+    <script src="/js/featherlight.min.js?1709917967"></script>
+    <script src="/js/highlight.pack.js?1709917967"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1709917967"></script>
+    <script src="/js/learn.js?1709917967"></script>
+    <script src="/js/hugo-learn.js?1709917967"></script>
+
+    <link href="/mermaid/mermaid.css?1709917967" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1709917967"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
