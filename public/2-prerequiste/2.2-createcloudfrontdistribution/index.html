@@ -12,21 +12,21 @@
     <title>Create CloudFront Distribution :: AWS CloudFront Signed URL</title>
 
     
-    <link href="/css/nucleus.css?1709992536" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1709992536" rel="stylesheet">
-    <link href="/css/hybrid.css?1709992536" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1709992536" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1709992536" rel="stylesheet">
-    <link href="/css/auto-complete.css?1709992536" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1709992536" rel="stylesheet">
-    <link href="/css/theme.css?1709992536" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1709992536" rel="stylesheet">
+    <link href="/css/nucleus.css?1709992961" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1709992961" rel="stylesheet">
+    <link href="/css/hybrid.css?1709992961" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1709992961" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1709992961" rel="stylesheet">
+    <link href="/css/auto-complete.css?1709992961" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1709992961" rel="stylesheet">
+    <link href="/css/theme.css?1709992961" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1709992961" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1709992536" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1709992961" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1709992536"></script>
+    <script src="/js/jquery-3.3.1.min.js?1709992961"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1709992536"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1709992536"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1709992961"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1709992961"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1709992536"></script>
+<script type="text/javascript" src="/js/search.js?1709992961"></script>
 
     
   </div>
@@ -448,16 +448,14 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>30-01-2022</font></i>
+        <i><font color=orange>09-03-2024</font></i>
     </left>
     <left>
         <br>
         <br>
             <b> Team </b> <br>
            
-            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
-                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
-                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Gia Huy </a> <br>
                
         </i>
         </left>
@@ -553,11 +551,11 @@
 <ol>
 <li>
 <p>Navigate to the <a href="https://console.aws.amazon.com/cloudfront">Amazon CloudFront Management Console</a>.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-1.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-1.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>Choose <strong>Create Distribution</strong>.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-2.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-2.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>In the <strong>Create distribution</strong> window:</p>
@@ -565,7 +563,7 @@
 <li>In the field <strong>Origin Domain Name</strong>, choose the S3 Bucket from Step 1.</li>
 <li>In the field <strong>Origin access</strong>, choose <strong>Origin access control settings</strong>.</li>
 <li>In the field <strong>Origin access control</strong>, choose <strong>Create new OAC</strong>.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-3.png" alt="cloudfront"></li>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-3.png" alt="cloudfront"></li>
 </ul>
 </li>
 <li>
@@ -574,55 +572,55 @@
 <li>In the field <strong>Signing behavior</strong>, choose <strong>Sign requests</strong>.</li>
 <li>Leave <strong>Do not override authorization header</strong> unchecked.</li>
 <li>Choose <strong>Create</strong> to continue.<br>
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-4.png" alt="cloudfront"></li>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-4.png" alt="cloudfront"></li>
 </ul>
 </li>
 <li>
 <p>Scroll down to <strong>Web Application Firewall (WAF)</strong>, select <strong>Do not enable security protections</strong>.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-5.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-5.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>Continue:</p>
 <ul>
 <li>Leave every options left as default</li>
 <li>Scroll down to the bottom of the page and choose <strong>Create Distribution</strong>. You will have to wait around 5 minutes for your CloudFront distribution to be ready.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-6.png" alt="cloudfront"></li>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-6.png" alt="cloudfront"></li>
 </ul>
 </li>
 <li>
 <p>When your CloudFront distribution is ready, you can click on its name to view its information in details.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-7.png" alt="cloudfront">
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-7.png" alt="cloudfront">
 Now we have to add a policy to S3 bucket to allow CloudFront Distribtuion get image from that bucket.</p>
 </li>
 <li>
 <p>Click on the ID of the distribution you created.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-8.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-8.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>In the distribution view, choose <strong>Origins</strong> tab. Select the origin you just created and choose <strong>Edit</strong>.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-9.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-9.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>In the <strong>Edit origin</strong> view, choose <strong>Copy policy</strong> to copy the S3 bucket policy to your clipboard and click on <strong>Go to S3 bucket permissions</strong>.
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-10.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-10.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>Scroll down to <strong>Bucket policy</strong> section, choose <strong>Edit</strong>
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-11.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-11.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>In the Bucket polycy edit page, paste the policy you coppied to the <strong>Policy</strong> board and choose <strong>Save changes</strong>
-<img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-12.png" alt="cloudfront"></p>
+<img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-12.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>Return to CloudFront distribution page, under <strong>Domain Name</strong> copy the FQDN, similar to the format <code>dxxxxxxxxxz.cloudfront.net</code>.</p>
 </li>
 </ol>
-<p><img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-13.png" alt="cloudfront"></p>
+<p><img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-13.png" alt="cloudfront"></p>
 <h3 id="test-the-distribution">Test the distribution</h3>
 <p>Now let&rsquo;s verify that the distribution is setup correctly and has access to the Amazon S3 contents.</p>
 <p>Use your browser and enter the URL <a href="https://dxxxxxxxxxz.cloudfront.net/">https://dxxxxxxxxxz.cloudfront.net/</a><!-- raw HTML omitted -->. Remember to replace the domain name with your FQDN. Your sample image should come up correctly. However, anyone have your URL can access your Amazon S3 contents.</p>
-<p><img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-14.png" alt="cloudfront"></p>
+<p><img src="/SignCloudFrontUrlWithLambdaFunction/images/2.prerequisite/04-setup-cloudfront-14.png" alt="cloudfront"></p>
 <p>In the next step, we will secure the Amazon CloudFront distribution to restrict public access.</p>
 
 
@@ -874,19 +872,19 @@ Now we have to add a policy to S3 bucket to allow CloudFront Distribtuion get im
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1709992536"></script>
-    <script src="/js/perfect-scrollbar.min.js?1709992536"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1709992536"></script>
-    <script src="/js/jquery.sticky.js?1709992536"></script>
-    <script src="/js/featherlight.min.js?1709992536"></script>
-    <script src="/js/highlight.pack.js?1709992536"></script>
+    <script src="/js/clipboard.min.js?1709992961"></script>
+    <script src="/js/perfect-scrollbar.min.js?1709992961"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1709992961"></script>
+    <script src="/js/jquery.sticky.js?1709992961"></script>
+    <script src="/js/featherlight.min.js?1709992961"></script>
+    <script src="/js/highlight.pack.js?1709992961"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1709992536"></script>
-    <script src="/js/learn.js?1709992536"></script>
-    <script src="/js/hugo-learn.js?1709992536"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1709992961"></script>
+    <script src="/js/learn.js?1709992961"></script>
+    <script src="/js/hugo-learn.js?1709992961"></script>
 
-    <link href="/mermaid/mermaid.css?1709992536" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1709992536"></script>
+    <link href="/mermaid/mermaid.css?1709992961" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1709992961"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -10,7 +10,7 @@ chapter : false
 
 In this lab, you'll learn how to create CloudFront signed URL to securely and privately access your contents stored in S3.
 
-![Overview](/SignedUrlWithLambda/images/signURL-1.png)
+![Overview](/SignCloudFrontUrlWithLambdaFunction/images/signURL-1.png)
 
 ### Content
 

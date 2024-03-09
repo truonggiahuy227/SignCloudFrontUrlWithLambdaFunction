@@ -18,7 +18,7 @@ You need to create a S3 bucket with a sample image and CloudFront distribution.
 
 ### Architecture
 
-![Overview](/SignedUrlWithLambda/images/signURL-2.png)
+![Overview](/SignCloudFrontUrlWithLambdaFunction/images/signURL-2.png)
 
 ### Content
 

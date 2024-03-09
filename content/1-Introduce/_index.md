@@ -23,7 +23,7 @@ By using **signed URL**, you get the following advantages:
   
 ### Overview architechture
 
-![Overview](/SignedUrlWithLambda/images/signURL-1.png)
+![Overview](/SignCloudFrontUrlWithLambdaFunction/images/signURL-1.png)
 
 1. User will call a GET API provided by **API Gateway**.
 2. **API Gateway** will trigger **Lambda Function**.
