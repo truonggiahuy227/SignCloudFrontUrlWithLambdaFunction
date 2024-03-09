@@ -12,21 +12,21 @@
     <title>Preparing a S3 bucket :: AWS CloudFront Signed URL</title>
 
     
-    <link href="/css/nucleus.css?1709922786" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1709922786" rel="stylesheet">
-    <link href="/css/hybrid.css?1709922786" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1709922786" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1709922786" rel="stylesheet">
-    <link href="/css/auto-complete.css?1709922786" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1709922786" rel="stylesheet">
-    <link href="/css/theme.css?1709922786" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1709922786" rel="stylesheet">
+    <link href="/css/nucleus.css?1709992536" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1709992536" rel="stylesheet">
+    <link href="/css/hybrid.css?1709992536" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1709992536" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1709992536" rel="stylesheet">
+    <link href="/css/auto-complete.css?1709992536" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1709992536" rel="stylesheet">
+    <link href="/css/theme.css?1709992536" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1709992536" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1709922786" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1709992536" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1709922786"></script>
+    <script src="/js/jquery-3.3.1.min.js?1709992536"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1709922786"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1709922786"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1709992536"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1709992536"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1709922786"></script>
+<script type="text/javascript" src="/js/search.js?1709992536"></script>
 
     
   </div>
@@ -556,7 +556,7 @@
 <ul>
 <li>Click <strong>Buckets</strong>.</li>
 <li>Click <strong>Create bucket</strong>.
-<img src="/images/2.prerequisite/01-create-bucket.png" alt="S3"></li>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/01-create-bucket.png" alt="S3"></li>
 </ul>
 </li>
 <li>
@@ -566,40 +566,40 @@
 <li>In the <strong>Bucket type</strong> field, select <strong>General purpose</strong>.</li>
 <li>In the <strong>Bucket name</strong> field, enter your bucket name. (Example: <strong><!-- raw HTML omitted -->-exclusive-content</strong>)</li>
 <li>Leave other fields as default.
-<img src="/images/2.prerequisite/02-configure-bucket-1.png" alt="S3"></li>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/02-configure-bucket-1.png" alt="S3"></li>
 </ul>
 </li>
 <li>
 <p>Scroll to the bottom of the page, click <strong>Create bucket</strong>.
-<img src="/images/2.prerequisite/02-configure-bucket-2.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/02-configure-bucket-2.png" alt="S3"></p>
 </li>
 <li>
 <p>Choose the bucket you have just created by clicking on its name.
-<img src="/images/2.prerequisite/03-upload-content-1.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-1.png" alt="S3"></p>
 </li>
 <li>
 <p>Choose <strong>Upload</strong>.
-<img src="/images/2.prerequisite/03-upload-content-2.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-2.png" alt="S3"></p>
 </li>
 <li>
 <p>Choose <strong>Add files</strong>. Select an image on your computer to upload.
-<img src="/images/2.prerequisite/03-upload-content-3.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-3.png" alt="S3"></p>
 </li>
 <li>
 <p>Your image you choose will be shown on the screen. Click <strong>Upload</strong> to upload your image to S3 bucket.
-<img src="/images/2.prerequisite/03-upload-content-4.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-4.png" alt="S3"></p>
 </li>
 <li>
 <p>After your image is uploaded successfully, click <strong>Return</strong> to return to your bucket.
-<img src="/images/2.prerequisite/03-upload-content-5.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-5.png" alt="S3"></p>
 </li>
 <li>
 <p>To view the detail of the object you have just uploaded, click on the object name.
-<img src="/images/2.prerequisite/03-upload-content-6.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-6.png" alt="S3"></p>
 </li>
 <li>
 <p>If you try to access the image using the <strong>Object URL</strong> you will get an access denied message. This is exactly what we want. We want to keep your S3 contents private and will only distribute them using an Amazon CloudFront distribution.
-<img src="/images/2.prerequisite/03-upload-content-7.png" alt="S3"></p>
+<img src="/SignedUrlWithLambda/images/2.prerequisite/03-upload-content-7.png" alt="S3"></p>
 </li>
 </ol>
 <p>In the next step, you will create the <strong>Amazon CloudFront Distribution</strong>.</p>
@@ -850,19 +850,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1709922786"></script>
-    <script src="/js/perfect-scrollbar.min.js?1709922786"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1709922786"></script>
-    <script src="/js/jquery.sticky.js?1709922786"></script>
-    <script src="/js/featherlight.min.js?1709922786"></script>
-    <script src="/js/highlight.pack.js?1709922786"></script>
+    <script src="/js/clipboard.min.js?1709992536"></script>
+    <script src="/js/perfect-scrollbar.min.js?1709992536"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1709992536"></script>
+    <script src="/js/jquery.sticky.js?1709992536"></script>
+    <script src="/js/featherlight.min.js?1709992536"></script>
+    <script src="/js/highlight.pack.js?1709992536"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1709922786"></script>
-    <script src="/js/learn.js?1709922786"></script>
-    <script src="/js/hugo-learn.js?1709922786"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1709992536"></script>
+    <script src="/js/learn.js?1709992536"></script>
+    <script src="/js/hugo-learn.js?1709992536"></script>
 
-    <link href="/mermaid/mermaid.css?1709922786" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1709922786"></script>
+    <link href="/mermaid/mermaid.css?1709992536" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1709992536"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

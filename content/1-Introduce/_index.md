@@ -21,9 +21,9 @@ By using **signed URL**, you get the following advantages:
 - Restricting access to files in Amazon S3 buckets. (What we will do in this lab)
 - Restricting access to files on custom origins.
   
-### Overall architechture
+### Overview architechture
 
-![Overall](/images/signURL-1.png)
+![Overview](/SignedUrlWithLambda/images/signURL-1.png)
 
 1. User will call a GET API provided by **API Gateway**.
 2. **API Gateway** will trigger **Lambda Function**.

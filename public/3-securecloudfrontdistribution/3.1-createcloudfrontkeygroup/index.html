@@ -12,21 +12,21 @@
     <title>Create CloudFront Key Group :: AWS CloudFront Signed URL</title>
 
     
-    <link href="/css/nucleus.css?1709922786" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1709922786" rel="stylesheet">
-    <link href="/css/hybrid.css?1709922786" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1709922786" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1709922786" rel="stylesheet">
-    <link href="/css/auto-complete.css?1709922786" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1709922786" rel="stylesheet">
-    <link href="/css/theme.css?1709922786" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1709922786" rel="stylesheet">
+    <link href="/css/nucleus.css?1709992536" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1709992536" rel="stylesheet">
+    <link href="/css/hybrid.css?1709992536" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1709992536" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1709992536" rel="stylesheet">
+    <link href="/css/auto-complete.css?1709992536" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1709992536" rel="stylesheet">
+    <link href="/css/theme.css?1709992536" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1709992536" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1709922786" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1709992536" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1709922786"></script>
+    <script src="/js/jquery-3.3.1.min.js?1709992536"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1709922786"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1709922786"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1709992536"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1709992536"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1709922786"></script>
+<script type="text/javascript" src="/js/search.js?1709992536"></script>
 
     
   </div>
@@ -568,22 +568,22 @@
 <p>Next, we will extract the public key from the file <code>private_key.pem</code> and save to the file named <code>public_key.pem</code>.</p>
 <pre tabindex="0"><code>openssl rsa -pubout -in private_key.pem -out public_key.pem
 </code></pre><p>The resulting file will contains both the public and the private key.
-<img src="/images/3-secureCloudFrontDistribution/03-genkey-2.png" alt="key pair"></p>
+<img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-genkey-2.png" alt="key pair"></p>
 </li>
 </ol>
 <h3 id="upload-public-key">Upload Public Key</h3>
 <ol>
 <li>
 <p>Navigate to <a href="https://console.aws.amazon.com/cloudfront">Amazon CloudFront Management Console</a></p>
-<p><img src="/images/2.prerequisite/04-setup-cloudfront-1.png" alt="cloudfront"></p>
+<p><img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-1.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>In the navigation menu, choose <strong>Public keys</strong>.</p>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-1.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-1.png" alt="key group"></p>
 </li>
 <li>
 <p>Choose <strong>Create public key</strong>.</p>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-2.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-2.png" alt="key group"></p>
 </li>
 <li>
 <p>In the <strong>Create public key</strong> window:</p>
@@ -593,7 +593,7 @@
 <li>For <strong>Key value</strong> field, copy and paste the contents of the public key from the file <code>public_key.pem</code> you created in the previous step.</li>
 <li>Finally, click on <strong>Create public key</strong>.</li>
 </ul>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-3.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-3.png" alt="key group"></p>
 </li>
 </ol>
 
@@ -601,20 +601,20 @@
 </div>
 
 <pre tabindex="0"><code>$ cat public_key.pem
-</code></pre><p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-4.png" alt="key group"></p>
+</code></pre><p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-4.png" alt="key group"></p>
 <ol start="5">
 <li>Rememmber this public <strong>Key ID</strong>. You will use it later section.
-<img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-5.png" alt="key group"></li>
+<img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-5.png" alt="key group"></li>
 </ol>
 <h3 id="create-key-group">Create Key group</h3>
 <ol>
 <li>
 <p>Navigate to <a href="https://console.aws.amazon.com/cloudfront">Amazon CloudFront Management Console</a>. On the left navigation, scroll down to <strong>Key management</strong> section, choose <strong>Key groups</strong>.</p>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-6.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-6.png" alt="key group"></p>
 </li>
 <li>
 <p>Choose <strong>Create key group</strong>.</p>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-7.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-7.png" alt="key group"></p>
 </li>
 <li>
 <p>On the <strong>Create key group</strong> page, do the following:</p>
@@ -624,11 +624,11 @@
 <li>For <strong>Public keys</strong>, select the public key you created on the previous step to add to the key group by choosing its ID.</li>
 <li>Choose <strong>Create key group</strong>.</li>
 </ul>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-8.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-8.png" alt="key group"></p>
 </li>
 <li>
 <p>Rememmber this key group ID.</p>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-9.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-9.png" alt="key group"></p>
 </li>
 </ol>
 <h3 id="associate-key-group">Associate Key group</h3>
@@ -636,11 +636,11 @@
 <ol>
 <li>
 <p>In the navigation menu, choose <strong>Distributions</strong>. Click on the <strong>Distribution ID</strong> of the distribution you created before.</p>
-<p><img src="/images/2.prerequisite/04-setup-cloudfront-8.png" alt="cloudfront"></p>
+<p><img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-8.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>Navigate to the <strong>Behaviors</strong> tab. Select the default <strong>Origin or Origin Group</strong> and then, choose <strong>Edit</strong>.</p>
-<p><img src="/images/2.prerequisite/04-setup-cloudfront-15.png" alt="cloudfront"></p>
+<p><img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-15.png" alt="cloudfront"></p>
 </li>
 <li>
 <p>Scroll down to <strong>Restrict Viewer Access (Use Signed URLs or Signed Cookies)</strong> section:</p>
@@ -649,16 +649,16 @@
 <li>Under <strong>Trusted Key Groups or Trusted Signer</strong>, select <strong>Trusted Key Groups</strong>.</li>
 <li>In the <strong>Add key groups</strong> field, choose the key group from the previous step.</li>
 </ul>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-10.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-10.png" alt="key group"></p>
 </li>
 <li>
 <p>Scroll down to the bottom of the page, choose <strong>Save changes</strong>.</p>
-<p><img src="/images/2.prerequisite/04-setup-cloudfront-17.png" alt="cloudfront"></p>
+<p><img src="/SignedUrlWithLambda/images/2.prerequisite/04-setup-cloudfront-17.png" alt="cloudfront"></p>
 </li>
 </ol>
 <h3 id="test-new-distribution">Test new distribution</h3>
 <p>Now verify that the distribution is restricted. Refresh the image or reopen the URL <a href="https://dxxxxxxxxxz.cloudfront.net/">https://dxxxxxxxxxz.cloudfront.net/</a><!-- raw HTML omitted -->, you should see the error message as bellow:</p>
-<p><img src="/images/3-secureCloudFrontDistribution/03-createKeyGroup-11.png" alt="key group"></p>
+<p><img src="/SignedUrlWithLambda/images/3-secureCloudFrontDistribution/03-createKeyGroup-11.png" alt="key group"></p>
 
 
 
@@ -906,19 +906,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1709922786"></script>
-    <script src="/js/perfect-scrollbar.min.js?1709922786"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1709922786"></script>
-    <script src="/js/jquery.sticky.js?1709922786"></script>
-    <script src="/js/featherlight.min.js?1709922786"></script>
-    <script src="/js/highlight.pack.js?1709922786"></script>
+    <script src="/js/clipboard.min.js?1709992536"></script>
+    <script src="/js/perfect-scrollbar.min.js?1709992536"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1709992536"></script>
+    <script src="/js/jquery.sticky.js?1709992536"></script>
+    <script src="/js/featherlight.min.js?1709992536"></script>
+    <script src="/js/highlight.pack.js?1709992536"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1709922786"></script>
-    <script src="/js/learn.js?1709922786"></script>
-    <script src="/js/hugo-learn.js?1709922786"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1709992536"></script>
+    <script src="/js/learn.js?1709992536"></script>
+    <script src="/js/hugo-learn.js?1709992536"></script>
 
-    <link href="/mermaid/mermaid.css?1709922786" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1709922786"></script>
+    <link href="/mermaid/mermaid.css?1709992536" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1709992536"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

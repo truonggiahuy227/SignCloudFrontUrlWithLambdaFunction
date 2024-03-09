@@ -12,21 +12,21 @@
     <title>Create Lambda Function :: AWS CloudFront Signed URL</title>
 
     
-    <link href="/css/nucleus.css?1709922786" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1709922786" rel="stylesheet">
-    <link href="/css/hybrid.css?1709922786" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1709922786" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1709922786" rel="stylesheet">
-    <link href="/css/auto-complete.css?1709922786" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1709922786" rel="stylesheet">
-    <link href="/css/theme.css?1709922786" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1709922786" rel="stylesheet">
+    <link href="/css/nucleus.css?1709992536" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1709992536" rel="stylesheet">
+    <link href="/css/hybrid.css?1709992536" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1709992536" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1709992536" rel="stylesheet">
+    <link href="/css/auto-complete.css?1709992536" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1709992536" rel="stylesheet">
+    <link href="/css/theme.css?1709992536" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1709992536" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1709922786" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1709992536" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1709922786"></script>
+    <script src="/js/jquery-3.3.1.min.js?1709992536"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1709922786"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1709922786"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1709992536"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1709992536"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1709922786"></script>
+<script type="text/javascript" src="/js/search.js?1709992536"></script>
 
     
   </div>
@@ -547,19 +547,19 @@
 <p><strong>AWS Lambda</strong> is a compute service that lets you run code without provisioning or managing servers. Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, and logging.</p>
 <p>In this step you will create <strong>AWS Lambda</strong> and use it to create <strong>Amazon CloudFront Signed URLs</strong>.</p>
 <h3 id="architecture">Architecture</h3>
-<p><img src="/images/signURL-3.png" alt="Overall"></p>
+<p><img src="/SignedUrlWithLambda/images/signURL-3.png" alt="Overview"></p>
 <h3 id="create-lambda-function">Create Lambda Function</h3>
 <ol>
 <li>
 <p>From your AWS management console and navigate to the <a href="https://us-west-2.console.aws.amazon.com/lambda/home?region=us-east-1#/functions">AWS Lambda Management Console</a>.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-1.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-1.png" alt="lambda"></p>
 </li>
 <li>
 <p>Select the same AWS <strong>Region</strong> that you use for <strong>AWS Secrets Manager</strong>. Currently, this lab uses region <strong>us-east-1</strong>.</p>
 </li>
 <li>
 <p>Click on <strong>Functions</strong> on the left navigation, and then choose <strong>Create function</strong>.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-2.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-2.png" alt="lambda"></p>
 </li>
 <li>
 <p>From <strong>Create function</strong> window:</p>
@@ -568,15 +568,15 @@
 <li>For <strong>Function name</strong>, provide a name. For example: <code>signCloudFrontUrlFunction</code></li>
 <li>For <strong>Runtime</strong>, select <strong>Node.js 16.x</strong>.</li>
 </ul>
-<p><img src="/images/4-lambdaFunction/04-lambda-3.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-3.png" alt="lambda"></p>
 </li>
 <li>
 <p>Scroll down to <strong>Change default execution role</strong> section, for <strong>Execution role</strong> select <strong>Create a new role with basic Lambda permissions</strong>. Leave the <strong>Advanced settings</strong> section untouched and choose <strong>Create functions</strong></p>
-<p><img src="/images/4-lambdaFunction/04-lambda-4.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-4.png" alt="lambda"></p>
 </li>
 <li>
 <p>Wait a little bit for the Lambda Function to be provisioned.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-5.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-5.png" alt="lambda"></p>
 </li>
 <li>
 <p>Replace the Lambda <code>index.js</code> codes with the codes from bellow.</p>
@@ -632,28 +632,28 @@ exports.handler = async function(event, context) {
 <li><strong>awsSecretsManagerSecretName</strong>: Name of the Secret Manager in step 3.2.</li>
 <li><strong>awsSecretsManagerSecretKeyName</strong>: Name of the key of the private key you stored in Secret Manager in step 3.2.</li>
 </ul>
-<p><img src="/images/4-lambdaFunction/04-lambda-6.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-6.png" alt="lambda"></p>
 </li>
 <li>
 <p><strong>Save</strong> and <strong>Deploy</strong> the function. Then you can create a <strong>Test</strong> event like bellow.
-<img src="/images/4-lambdaFunction/04-lambda-8.png" alt="lambda"></p>
+<img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-8.png" alt="lambda"></p>
 </li>
 <li>
 <p>After creating a test event. You can run <strong>Test</strong> to check if the function works. However, you will get the error like this:
-<img src="/images/4-lambdaFunction/04-lambda-7.png" alt="lambda"></p>
+<img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-7.png" alt="lambda"></p>
 <p>You know why? Because we have not added the permission to read the Secret from <strong>Secret Manager</strong> to <strong>Lambda Function</strong> execution role.</p>
 </li>
 <li>
 <p>Since the newly created Lambda role does <strong>NOT</strong> have permission to access <strong>AWS Secrets Manager</strong>, you will need to update the role in <a href="https://console.aws.amazon.com/iam">IAM</a>. To quickly update this role, follow the step in the image bellow:</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-9.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-9.png" alt="lambda"></p>
 </li>
 <li>
 <p>After navigating to the role needed to modify, choose <strong>Add permission</strong> -&gt; <strong>Create inline policy</strong>.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-10.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-10.png" alt="lambda"></p>
 </li>
 <li>
 <p>In the <strong>Specify permissions</strong> window, change to <strong>JSON</strong> view.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-11.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-11.png" alt="lambda"></p>
 <p>Then copy and paste the policy bellow. Remember to change the resource arn to the arn of the Secret you created in Secret Manager in step 3.2.</p>
 <pre tabindex="0"><code>{
     &#34;Effect&#34;: &#34;Allow&#34;,
@@ -663,17 +663,17 @@ exports.handler = async function(event, context) {
 </code></pre></li>
 <li>
 <p>Choose <strong>Next</strong> to continue. In <strong>Review and create</strong> window, give the newly created policy a name and review the options. Choose <strong>Create policy</strong> to finish.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-12.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-12.png" alt="lambda"></p>
 </li>
 <li>
 <p>Return to your Lambda Function and run the <strong>Test</strong> again. If you set up correctly, the result will be looked like that:</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-13.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-13.png" alt="lambda"></p>
 <p>In the log window, you will get the signed URL. Copy this URL and paste to your browser, this time you will be able to access your image stored in S3.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-14.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-14.png" alt="lambda"></p>
 </li>
 <li>
 <p>Refresh the URL above after 5 minutes and you will get the error. Because we set the expired time to 5 minutes, after that amount of time, the URL will no longer work.</p>
-<p><img src="/images/4-lambdaFunction/04-lambda-15.png" alt="lambda"></p>
+<p><img src="/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-15.png" alt="lambda"></p>
 </li>
 </ol>
 
@@ -922,19 +922,19 @@ exports.handler = async function(event, context) {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1709922786"></script>
-    <script src="/js/perfect-scrollbar.min.js?1709922786"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1709922786"></script>
-    <script src="/js/jquery.sticky.js?1709922786"></script>
-    <script src="/js/featherlight.min.js?1709922786"></script>
-    <script src="/js/highlight.pack.js?1709922786"></script>
+    <script src="/js/clipboard.min.js?1709992536"></script>
+    <script src="/js/perfect-scrollbar.min.js?1709992536"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1709992536"></script>
+    <script src="/js/jquery.sticky.js?1709992536"></script>
+    <script src="/js/featherlight.min.js?1709992536"></script>
+    <script src="/js/highlight.pack.js?1709992536"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1709922786"></script>
-    <script src="/js/learn.js?1709922786"></script>
-    <script src="/js/hugo-learn.js?1709922786"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1709992536"></script>
+    <script src="/js/learn.js?1709992536"></script>
+    <script src="/js/hugo-learn.js?1709992536"></script>
 
-    <link href="/mermaid/mermaid.css?1709922786" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1709922786"></script>
+    <link href="/mermaid/mermaid.css?1709992536" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1709992536"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

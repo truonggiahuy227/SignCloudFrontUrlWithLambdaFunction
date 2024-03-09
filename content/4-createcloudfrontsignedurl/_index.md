@@ -14,33 +14,33 @@ In this step you will create **AWS Lambda** and use it to create **Amazon CloudF
 
 ### Architecture
 
-![Overall](/images/signURL-3.png)
+![Overview](/SignedUrlWithLambda/images/signURL-3.png)
 
 ### Create Lambda Function
 
 1. From your AWS management console and navigate to the [AWS Lambda Management Console](https://us-west-2.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-1.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-1.png)
 
 2. Select the same AWS **Region** that you use for **AWS Secrets Manager**. Currently, this lab uses region **us-east-1**.
 3. Click on **Functions** on the left navigation, and then choose **Create function**.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-2.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-2.png)
 
 4. From **Create function** window:
       + Select **Author from scratch**.
       + For **Function name**, provide a name. For example: `signCloudFrontUrlFunction`
       + For **Runtime**, select **Node.js 16.x**.
     
-    ![lambda](/images/4-lambdaFunction/04-lambda-3.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-3.png)
 
 5. Scroll down to **Change default execution role** section, for **Execution role** select **Create a new role with basic Lambda permissions**. Leave the **Advanced settings** section untouched and choose **Create functions**
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-4.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-4.png)
 
 6. Wait a little bit for the Lambda Function to be provisioned.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-5.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-5.png)
 
 7. Replace the Lambda `index.js` codes with the codes from bellow.
    
@@ -98,27 +98,27 @@ In this step you will create **AWS Lambda** and use it to create **Amazon CloudF
       + **awsSecretsManagerSecretName**: Name of the Secret Manager in step 3.2.
       + **awsSecretsManagerSecretKeyName**: Name of the key of the private key you stored in Secret Manager in step 3.2.
   
-    ![lambda](/images/4-lambdaFunction/04-lambda-6.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-6.png)
 
 8. **Save** and **Deploy** the function. Then you can create a **Test** event like bellow.
-   ![lambda](/images/4-lambdaFunction/04-lambda-8.png)
+   ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-8.png)
 
 9. After creating a test event. You can run **Test** to check if the function works. However, you will get the error like this:
-    ![lambda](/images/4-lambdaFunction/04-lambda-7.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-7.png)
 
     You know why? Because we have not added the permission to read the Secret from **Secret Manager** to **Lambda Function** execution role.
 
 10. Since the newly created Lambda role does **NOT** have permission to access **AWS Secrets Manager**, you will need to update the role in [IAM](https://console.aws.amazon.com/iam). To quickly update this role, follow the step in the image bellow:
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-9.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-9.png)
 
 11. After navigating to the role needed to modify, choose **Add permission** -> **Create inline policy**.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-10.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-10.png)
 
 12. In the **Specify permissions** window, change to **JSON** view.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-11.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-11.png)
 
     Then copy and paste the policy bellow. Remember to change the resource arn to the arn of the Secret you created in Secret Manager in step 3.2.
 
@@ -132,16 +132,16 @@ In this step you will create **AWS Lambda** and use it to create **Amazon CloudF
 
 13. Choose **Next** to continue. In **Review and create** window, give the newly created policy a name and review the options. Choose **Create policy** to finish.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-12.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-12.png)
 
 14. Return to your Lambda Function and run the **Test** again. If you set up correctly, the result will be looked like that:
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-13.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-13.png)
 
     In the log window, you will get the signed URL. Copy this URL and paste to your browser, this time you will be able to access your image stored in S3.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-14.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-14.png)
 
 15. Refresh the URL above after 5 minutes and you will get the error. Because we set the expired time to 5 minutes, after that amount of time, the URL will no longer work.
 
-    ![lambda](/images/4-lambdaFunction/04-lambda-15.png)
+    ![lambda](/SignedUrlWithLambda/images/4-lambdaFunction/04-lambda-15.png)
